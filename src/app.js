@@ -1,11 +1,13 @@
-const express = require('express');
-const userRouter = require('./routers/userRouter');
+const express = require("express");
+const userRouter = require("./routers/userRouter");
 
 module.exports = () => {
-	const app = express();
+  const app = express();
 
-	app.use(userRouter);
-	app.use(express.json());
+  app.use(express.json());
+  app.use(express.urlencoded({ extended: true }));
 
-	return app;
+  app.use(userRouter);
+
+  return app;
 };
